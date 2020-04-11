@@ -1,10 +1,50 @@
 <html>
-    <body>
+    
         <head>
-            <title>
-                my first spapp
-            </title>
-            <h1>welcome to first ol coding</h1>
+
+            <link rel="stylesheet" href="spapp-master/assets/css/spapp.css" />
+            <link rel="stylesheet" href="spapp-master/assets/css/custom.css" />
+            <link rel="stylesheet" href="spapp-master/assets/css/select2.min.css" />
+             
+            <title> my first spapp</title>
         </head>
+        <body>
+
+            <nav role="navigation">
+                <ul>
+                  <li><a href="#view_1">go to view 1</a></li>
+                  <li><a href="#countries">countries</a></li>
+                  <li><a href="#charts">charts</a></li>
+                </ul>
+              </nav>
+              
+        
+        <h1 style="margin-top: 50px;">welcome to first ol coding</h1>
+
+        <main id="spapp" role="main">
+            <section id="countries"></section>
+            <section id="charts"></section>
+            <section id="error_404"><h1>Page not found</h1></section>
+            <section id="view_1" data-load="view_1.html" ></section>
+          </main>
+
     </body>
+
+    
+    <script>
+        console.log("dummy log");
+    </script>
+
+<script src="spapp-master/assets/js/jquery-3.1.0.min.js" ></script>
+<script src="spapp-master/assets/js/jquery.spapp.js"></script>
+<script src="spapp-master/assets/js/custom.js"></script>
+<script src="spapp-master/assets/js/select2.min.js"></script>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
 </html>
