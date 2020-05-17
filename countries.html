@@ -56,83 +56,93 @@
 
         <script>
 
-            function clearData() {
+          
+          function append_country(country) 
+         {
+              var html=$("#country").html();
+              html += '<option value="'+country.name +'">'+country.name +'</option>'; 
+              $("#country").html(html);
+              $('#country').select2();
+         }
+    
+
+          function clearData() 
+         {
                 $('#country_modal form :input').val("");
                 $('.modal-backdrop').remove();
+         }
 
-            }
 
-function open_country_modal() {
-      console.log("open modal");
-      $("#country_modal").modal('toggle')
-    }
+          function open_country_modal()
+         {
+                console.log("open modal");
+                $("#country_modal").modal('toggle')
+         }
+
+    
 
 //AJAX CALL to server connecting this pure frontend with a backend which is pure php
-          $.get("rest/countries").done(function(response){
+          $.get("rest/countries").done(function(response)
+          {
               var countries_html="";
-              for(var i=0; i<response.length ;i++){
-                countries_html+= '<option value="'+response[i].name +'">'+response[i].name +'</option>'; 
-
+              for(var i=0; i<response.length ;i++)
+              {
+                  countries_html+= '<option value="'+response[i].name +'">'+response[i].name +'</option>'; 
               }
+              
               $("#country").html(countries_html);
               $('#country').select2();
 
               $("#country_list").html(countries_html);
               $('#country_list').select2();
 
-          }).fail(function(error){
-
+          }).fail(function(error)
+          {
               console.log(error);
+          }); 
 
-          });  
           $('#country_list').select2({tags:true});
 
           $("#country_form").validate({
-   rules: {
-     // no quoting necessary
-     ISO:{
-        required:true, 
-        minlength:2,
-        maxlength:2 
-     },
-     cname:{
-       required:true
-     }
- },
-   messages:{ ISO:{
-          required:"This field is required",
-          minlength:"Code must be at least 2 characters"
-        }
-    },
+            rules: {
+              // no quoting necessary
+              ISO:{
+                  required:true, 
+                  minlength:2,
+                  maxlength:2 
+              },
+              cname:{
+                required:true
+              }
+          },
+            messages:{ ISO:{
+                    required:"This field is required",
+                    minlength:"Code must be at least 2 characters"
+                  }
+              },
     
-      submitHandler: function(form) {
-      $.post( "rest/countries", $( "#country_form" ).serialize() ).done(function(data) {
-       console.log(data);
-       append_country(data);
-      toastr.success("Data has been saved");
+      submitHandler: function(form) 
+      {
+          $.post( "rest/countries", $( "#country_form" ).serialize() ).done(function(data) {
+          console.log(data);
+          append_country(data);
+          toastr.success("Data has been saved");
+          
+          }).fail(function() {
+          alert( "error" );
+          });
       
-      }).fail(function() {
-      alert( "error" );
-      });
       
-      
-      $("#country_modal").modal('toggle');
-     $('#country_modal form :input').val("");
-     $('.modal-backdrop').remove();
-     
-     
-
-    }
+          $("#country_modal").modal('toggle');
+          $('#country_modal form :input').val("");
+          $('.modal-backdrop').remove();
+    
+      }
 
  });
 
 
-  function append_country(country) {
-    var html=$("#country").html();
-    html += '<option value="'+country.name +'">'+country.name +'</option>'; 
-    $("#country").html(html);
-    $('#country').select2();
-  }
+  
 
         </script>
                 
